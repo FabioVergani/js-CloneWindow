@@ -3,16 +3,19 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 
 
-			(function($w){
-			 var w=$w, d=w.document, t, h, e, o=w.open('data:text/html;charset=utf-8,');
-			 if(o!==e){
-				t=d.location.href,
-				e=d.doctype,
-				h=d.documentElement,
-				d=o.document;
-				d.write(e===null?'<!DOCTYPE html>':new XMLSerializer().serializeToString(e));
-				d.close();
-				d.replaceChild(h.cloneNode(true),d.documentElement);
-				d.title=t;
-			 };
+			(function(win){
+				var $w=win, $d=$w.document, f=function(){
+				 var e, h, d=$d, w=$w, o=w.open('data:text/html;charset=utf-8,');
+				 w.removeEventListener('load',f);
+				 if(o!==e){
+					d.normalize();
+					e=d.doctype;
+					h=d.documentElement;
+					d=o.document;
+					d.write(e===null?'<!DOCTYPE html>':new XMLSerializer().serializeToString(e));
+					d.close();
+					d.replaceChild(h.cloneNode(true),d.documentElement);
+				 };
+				};
+				if($d.readyState==='complete'){f();}else{$w.addEventListener('load',f);};
 			})(window);
