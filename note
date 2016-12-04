@@ -1,0 +1,25 @@
+javascript:void(function(){'use strict';
+ function f(evt){
+  const w=evt.target||evt,d=w.document;
+  let n,i=d.createNodeIterator(d.createDocumentFragment().appendChild(d.documentElement.cloneNode(true)),128);
+  while(n=i.nextNode()){n.remove();};
+  n=i.root;
+  n.normalize();
+  i=d.createNodeIterator(n,4,function(t){
+	const n=t,p=n.parentElement;//console.dir(n);
+	if(p){
+	 let s=w.style.whiteSpace;console.dir(s);
+	};
+	  
+	return 1;
+  });
+  while(n=i.nextNode()){};
+ }
+ const w=window;
+ w.removeEventListener('load',f);
+ if(w.document.readyState!=='complete'){	
+	w.addEventListener('load',f);
+ }else{
+	f(w);
+ };
+}());
