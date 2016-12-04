@@ -1,0 +1,12 @@
+javascript:void(function(){'use strict';
+ function f(){
+  w.removeEventListener('load',f);
+ };	
+ const w=window, d=w.document;  
+ if(d.readyState!=='complete'){
+	w.removeEventListener('load',f);
+	w.addEventListener('load',f);
+ }else{
+	f();
+ };
+}());
