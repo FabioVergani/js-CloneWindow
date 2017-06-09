@@ -1,5 +1,4 @@
 (function($) {
- 
   const $d=$.document,
 	$dt=$d.doctype,
 	$dl=$d.location,
@@ -16,5 +15,5 @@
 	};
 
   $head.insertBefore($d.createElement('base'),$head.firstChild).href=[$dl.protocol,$dl.host].join('//');
-	let opened=$.open(URL.createObjectURL(new Blob([(new TextEncoder).encode('<!DOCTYPE\u0020'+$dt.name+((x=$dt.publicId)?'\u0020PUBLIC\u0020"'+x+'"':"")+((x=$dt.systemId)?'\u0020"' +x+'"':"")+'>'+(new XMLSerializer).serializeToString($dE))],{type:'text/html'})));
+	let opened=$.open($.URL.createObjectURL(new $.Blob([(new $.TextEncoder).encode('<!DOCTYPE\u0020'+$dt.name+((x=$dt.publicId)?'\u0020PUBLIC\u0020"'+x+'"':"")+((x=$dt.systemId)?'\u0020"' +x+'"':"")+'>'+(new $.XMLSerializer).serializeToString($dE))],{type:'text/html',encoding:$d.characterSet})));
 })(window);
